@@ -40,6 +40,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build using testng xml files
+      if: ${{inputs.xmlfilename}}
       run: > 
         mvn clean test 
         -DXmlFile=${{inputs.xmlfilename}} 
@@ -47,6 +48,7 @@ jobs:
         -Dmaven.test.failure.ignore=true
 
     - name: Build with Maven regex
+      if: ${{inputs.testsname}}
       run: > 
         mvn clean test 
         -Dtest=${{inputs.testsname}} 
