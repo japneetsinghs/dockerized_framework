@@ -15,10 +15,10 @@ on:
         type: string
         description: 'browser name'
         default: 'chrome'
-    testsname:
+      testsname:
         description: 'enter the regex to run the tests'
         type: string
-    xmlfilename:
+      xmlfilename:
         type: string
         description: "enter xml file name"
   push:
