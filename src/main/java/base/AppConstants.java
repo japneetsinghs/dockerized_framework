@@ -6,7 +6,7 @@ public class AppConstants
     // mvn test -Dplatform or
     // mvn test -DbrowserName=firefox -Dplatform=remote
     public static final String browserName = System.getProperty("browserName", "chrome");
-    public static final String platform = System.getProperty("platform", "local");
+    public static final String platform = System.getProperty("platform", "remote_git");
     public static final String enableBrowserOptions = System.getProperty("enableBrowserOptions", "false");
 
 
