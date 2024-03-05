@@ -2,35 +2,12 @@
 <testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-03-05T15:34:43 IST" name="All Test Suite" finished-at="2024-03-05T15:35:02 IST" duration-ms="18427">
+  <suite started-at="2024-03-05T15:53:58 IST" name="All Test Suite" finished-at="2024-03-05T15:54:17 IST" duration-ms="19281">
     <groups>
     </groups>
-    <test started-at="2024-03-05T15:34:43 IST" name="Test 2" finished-at="2024-03-05T15:34:57 IST" duration-ms="13543">
-      <class name="page_tests.GoogleSearchTests">
-        <test-method is-config="true" signature="setup(java.lang.String)[pri:0, instance:page_tests.GoogleSearchTests@258e2e41]" started-at="2024-03-05T15:34:43 IST" name="setup" finished-at="2024-03-05T15:34:44 IST" duration-ms="935" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="testGoogleSearch()[pri:0, instance:page_tests.GoogleSearchTests@258e2e41]" started-at="2024-03-05T15:34:44 IST" name="testGoogleSearch" finished-at="2024-03-05T15:34:57 IST" duration-ms="12479" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testGoogleSearch -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:page_tests.GoogleSearchTests@258e2e41]" started-at="2024-03-05T15:34:57 IST" name="tearDown" finished-at="2024-03-05T15:34:57 IST" duration-ms="112" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- page_tests.GoogleSearchTests -->
-    </test> <!-- Test 2 -->
-    <test started-at="2024-03-05T15:34:43 IST" name="Test 1" finished-at="2024-03-05T15:35:02 IST" duration-ms="18427">
+    <test started-at="2024-03-05T15:53:58 IST" name="Test 1" finished-at="2024-03-05T15:54:17 IST" duration-ms="19281">
       <class name="page_tests.GoogleSearchImFeelingLuckyTests">
-        <test-method is-config="true" signature="setup(java.lang.String)[pri:0, instance:page_tests.GoogleSearchImFeelingLuckyTests@568bf312]" started-at="2024-03-05T15:34:43 IST" name="setup" finished-at="2024-03-05T15:34:45 IST" duration-ms="1886" status="PASS">
+        <test-method is-config="true" signature="setup(java.lang.String)[pri:0, instance:page_tests.GoogleSearchImFeelingLuckyTests@589b3632]" started-at="2024-03-05T15:53:58 IST" name="setup" finished-at="2024-03-05T15:54:00 IST" duration-ms="1968" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -41,15 +18,42 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="click2ndLink()[pri:0, instance:page_tests.GoogleSearchImFeelingLuckyTests@568bf312]" started-at="2024-03-05T15:34:45 IST" name="click2ndLink" finished-at="2024-03-05T15:35:01 IST" duration-ms="16067" status="PASS">
+        <test-method signature="click2ndLink()[pri:0, instance:page_tests.GoogleSearchImFeelingLuckyTests@589b3632]" started-at="2024-03-05T15:54:00 IST" name="click2ndLink" finished-at="2024-03-05T15:54:17 IST" duration-ms="16829" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- click2ndLink -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:page_tests.GoogleSearchImFeelingLuckyTests@568bf312]" started-at="2024-03-05T15:35:01 IST" name="tearDown" finished-at="2024-03-05T15:35:02 IST" duration-ms="472" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:page_tests.GoogleSearchImFeelingLuckyTests@589b3632]" started-at="2024-03-05T15:54:17 IST" name="tearDown" finished-at="2024-03-05T15:54:17 IST" duration-ms="462" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- page_tests.GoogleSearchImFeelingLuckyTests -->
     </test> <!-- Test 1 -->
   </suite> <!-- All Test Suite -->
+  <suite started-at="2024-03-05T15:54:17 IST" name="All Test Suite (0)" finished-at="2024-03-05T15:54:30 IST" duration-ms="12409">
+    <groups>
+    </groups>
+    <test started-at="2024-03-05T15:54:17 IST" name="Test 1" finished-at="2024-03-05T15:54:30 IST" duration-ms="12409">
+      <class name="page_tests.GoogleSearchTests">
+        <test-method is-config="true" signature="setup(java.lang.String)[pri:0, instance:page_tests.GoogleSearchTests@6f3b5d16]" started-at="2024-03-05T15:54:17 IST" name="setup" finished-at="2024-03-05T15:54:18 IST" duration-ms="964" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[firefox]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="testGoogleSearch()[pri:0, instance:page_tests.GoogleSearchTests@6f3b5d16]" started-at="2024-03-05T15:54:18 IST" name="testGoogleSearch" finished-at="2024-03-05T15:54:29 IST" duration-ms="10969" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGoogleSearch -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:page_tests.GoogleSearchTests@6f3b5d16]" started-at="2024-03-05T15:54:29 IST" name="tearDown" finished-at="2024-03-05T15:54:30 IST" duration-ms="472" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- page_tests.GoogleSearchTests -->
+    </test> <!-- Test 1 -->
+  </suite> <!-- All Test Suite (0) -->
 </testng-results>

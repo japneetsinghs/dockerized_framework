@@ -40,8 +40,7 @@ jobs:
       if: ${{inputs.xmlfilename}}
       run: > 
         mvn clean test 
-        -DxmlFile=${{inputs.xmlfilename}} 
-        -DenableBrowserOptions=true 
+        -Dsurefire.suiteXmlFiles=${{inputs.xmlfilename}} 
         -Dmaven.test.failure.ignore=true
 
 #     Report generation
