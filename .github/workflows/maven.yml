@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Java CI with Maven
+name: Java CI with Maven Testing
 
 on:
   workflow_dispatch:
@@ -15,12 +15,12 @@ on:
         type: string
         description: 'browser name'
         default: 'chrome'
-      testsname:
-        description: 'enter the regex to run the tests'
+      testname:
+        description: 'enter the regex to run the test'
         type: string
       xmlfilename:
         type: string
-        description: "enter xml file name"
+        description: 'enter on or xmls to run'
   push:
     branches: [ "master" ]
   pull_request:
@@ -48,10 +48,10 @@ jobs:
         -Dmaven.test.failure.ignore=true
 
     - name: Build with Maven regex
-      if: ${{inputs.testsname}}
+      if: ${{inputs.testname}}
       run: > 
         mvn clean test 
-        -Dtest=${{inputs.testsname}} 
+        -Dtest=${{inputs.testname}} 
         -DbrowserName=${{inputs.browsername}}
         -DenableBrowserOptions=true 
         -Dmaven.test.failure.ignore=true
