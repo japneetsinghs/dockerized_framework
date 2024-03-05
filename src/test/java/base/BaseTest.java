@@ -22,7 +22,8 @@ public class BaseTest
    protected WebDriver driver;
     private DesiredCapabilities capabilities;
     protected String browser;
-    private ChromeOptions options;
+    private ChromeOptions chromeOptions;
+    private FirefoxOptions firefoxOptions;
 
     @Parameters({"browserName"})
     @BeforeTest
@@ -35,7 +36,7 @@ public class BaseTest
             }
 
             capabilities = new DesiredCapabilities();
-            options = BrowserOptions.getChromeOptions(capabilities);
+        chromeOptions = BrowserOptions.getChromeOptions();
 
             try {
                 if (browser.equalsIgnoreCase("chrome"))
@@ -45,8 +46,8 @@ public class BaseTest
                         if (platform.equalsIgnoreCase("local"))
                         {
                             WebDriverManager.chromedriver().setup();
-                            options.addArguments("--remote-allow-origins=*");
-                            driver = new ChromeDriver(options);
+                            chromeOptions.addArguments("--remote-allow-origins=*");
+                            driver = new ChromeDriver(chromeOptions);
                         }
                     }
                     else if (platform.equalsIgnoreCase("remote"))
@@ -66,9 +67,11 @@ public class BaseTest
                 {
                     if (enableBrowserOptions.equalsIgnoreCase("true"))
                     {
+                        firefoxOptions = BrowserOptions.getFirefoxOptions();
+
                         if (platform.equalsIgnoreCase("local")) {
                             WebDriverManager.firefoxdriver().setup();
-                            driver = new FirefoxDriver();
+                            driver = new FirefoxDriver(firefoxOptions);
                         }
                     }
                     else if (platform.equalsIgnoreCase("remote")) {
