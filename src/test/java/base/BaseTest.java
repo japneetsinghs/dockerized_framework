@@ -20,14 +20,11 @@ import static base.AppConstants.*;
 public class BaseTest
 {
    protected WebDriver driver;
-    private DesiredCapabilities capabilities;
     protected String browser;
-    private ChromeOptions chromeOptions;
-    private FirefoxOptions firefoxOptions;
 
     @Parameters({"browserName"})
-    @BeforeTest
-    public void setup(String browserName)
+    @BeforeTest()
+    public void setup(@Optional String browserName)
     {
             if (browserName != null) {
                 browser = browserName;
@@ -35,21 +32,22 @@ public class BaseTest
                 browser = AppConstants.browserName;
             }
 
-            capabilities = new DesiredCapabilities();
-        chromeOptions = BrowserOptions.getChromeOptions();
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        ChromeOptions chromeOptions;
+        FirefoxOptions firefoxOptions;
+
 
             try {
                 if (browser.equalsIgnoreCase("chrome"))
                 {
-                    if (enableBrowserOptions.equalsIgnoreCase("true"))
-                    {
                         if (platform.equalsIgnoreCase("local"))
                         {
+                            chromeOptions = new ChromeOptions();
                             WebDriverManager.chromedriver().setup();
                             chromeOptions.addArguments("--remote-allow-origins=*");
                             driver = new ChromeDriver(chromeOptions);
                         }
-                    }
+
                     else if (platform.equalsIgnoreCase("remote"))
                     {
                         capabilities.setBrowserName(browser);
@@ -58,6 +56,15 @@ public class BaseTest
                         driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities); //grid chrome
 
                     }
+
+                    else if (platform.equalsIgnoreCase("remote_git"))
+                    {
+                        chromeOptions = BrowserOptions.getChromeOptions();
+                        WebDriverManager.chromedriver().setup();
+                        chromeOptions.addArguments("--remote-allow-origins=*");
+                        driver = new ChromeDriver(chromeOptions);
+                    }
+
                     else
                     {
                         System.out.println("Invalid platform name");
@@ -65,25 +72,33 @@ public class BaseTest
 
                 } else if (browser.equalsIgnoreCase("firefox"))
                 {
-                    if (enableBrowserOptions.equalsIgnoreCase("true"))
-                    {
-                        firefoxOptions = BrowserOptions.getFirefoxOptions();
-
-                        if (platform.equalsIgnoreCase("local")) {
-                            WebDriverManager.firefoxdriver().setup();
-                            driver = new FirefoxDriver(firefoxOptions);
-                        }
+                    if (platform.equalsIgnoreCase("local")) {
+                        WebDriverManager.firefoxdriver().setup();
+                        driver = new FirefoxDriver();
                     }
+
                     else if (platform.equalsIgnoreCase("remote")) {
                         capabilities.setBrowserName(browser);
                         capabilities.setPlatform(Platform.LINUX);  //required when containers are running on different OS
                         //driver = new RemoteWebDriver(new URL("http://localhost:4442/wd/hub"), capabilities); //standalone firefox
                         driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities); //grid firefox
 
-                    } else {
+                    }
+                    else if (platform.equalsIgnoreCase("remote_git"))
+                    {
+                        firefoxOptions = BrowserOptions.getFirefoxOptions();
+                        WebDriverManager.firefoxdriver().setup();
+                        driver = new FirefoxDriver(firefoxOptions);
+                    }
+                    else
+                    {
                         System.out.println("Invalid platform name");
                     }
-                } else {
+
+
+
+                } else
+                {
                     System.out.println("Invalid browser name provided");
                 }
 

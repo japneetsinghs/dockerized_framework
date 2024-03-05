@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="TestSuite" time="19.928" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="TestSuite" time="18.616" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="IN"/>
     <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk/21.0.1/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/japneet/Downloads/industry_framework_automation/target/surefire/surefirebooter459824563886014005.jar /Users/japneet/Downloads/industry_framework_automation/target/surefire 2024-03-05T11-54-44_224-jvmRun1 surefire361254948237143549tmp surefire_08608254045207210456tmp"/>
+    <property name="sun.java.command" value="/Users/japneet/Downloads/industry_framework_automation/target/surefire/surefirebooter557431068174079754.jar /Users/japneet/Downloads/industry_framework_automation/target/surefire 2024-03-05T15-34-43_543-jvmRun1 surefire1628781559317442764tmp surefire_05320809380643159194tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="XmlFile" value="testng_maven.xml"/>
@@ -30,13 +30,14 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/japneet/Downloads/industry_framework_automation/target/surefire/surefirebooter459824563886014005.jar"/>
+    <property name="surefire.real.class.path" value="/Users/japneet/Downloads/industry_framework_automation/target/surefire/surefirebooter557431068174079754.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="21.0.1"/>
     <property name="user.name" value="japneet"/>
     <property name="stdout.encoding" value="UTF-8"/>
     <property name="path.separator" value=":"/>
+    <property name="platform" value="remote_git"/>
     <property name="os.version" value="13.4.1"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="file.encoding" value="UTF-8"/>
@@ -49,7 +50,6 @@
     <property name="user.dir" value="/Users/japneet/Downloads/industry_framework_automation"/>
     <property name="os.arch" value="aarch64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="enableBrowserOptions" value="true"/>
     <property name="native.encoding" value="UTF-8"/>
     <property name="java.library.path" value="/Users/japneet/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
     <property name="java.vm.info" value="mixed mode, sharing"/>
@@ -60,6 +60,6 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testGoogleSearch" classname="page_tests.GoogleSearchTests" time="11.161"/>
-  <testcase name="click2ndLink" classname="page_tests.GoogleSearchImFeelingLuckyTests" time="16.633"/>
+  <testcase name="testGoogleSearch" classname="page_tests.GoogleSearchTests" time="11.544"/>
+  <testcase name="click2ndLink" classname="page_tests.GoogleSearchImFeelingLuckyTests" time="16.068"/>
 </testsuite>
