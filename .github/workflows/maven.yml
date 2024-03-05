@@ -29,7 +29,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn clean test -DXmlFile=testng_maven.xml
+      run: mvn clean test -DXmlFile=testng_maven.xml -DenableBrowserOptions=true
 
 #     Report generation
 #    - name: archive report artifact

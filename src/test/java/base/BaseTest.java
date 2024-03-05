@@ -13,15 +13,16 @@ import org.testng.annotations.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static base.AppConstants.browserName;
-import static base.AppConstants.platform;
 import org.openqa.selenium.chrome.ChromeOptions;
+
+import static base.AppConstants.*;
 
 public class BaseTest
 {
    protected WebDriver driver;
-    DesiredCapabilities capabilities;
+    private DesiredCapabilities capabilities;
     protected String browser;
+    private ChromeOptions options;
 
     @Parameters({"browserName"})
     @BeforeTest
@@ -34,29 +35,43 @@ public class BaseTest
             }
 
             capabilities = new DesiredCapabilities();
+            options = BrowserOptions.getChromeOptions(capabilities);
 
             try {
-                if (browser.equalsIgnoreCase("chrome")) {
-                    if (platform.equalsIgnoreCase("local")) {
-                        WebDriverManager.chromedriver().setup();
-                        ChromeOptions options = new ChromeOptions();
-                        options.addArguments("--remote-allow-origins=*");
-                        driver = new ChromeDriver(options);
-                    } else if (platform.equalsIgnoreCase("remote")) {
+                if (browser.equalsIgnoreCase("chrome"))
+                {
+                    if (enableBrowserOptions.equalsIgnoreCase("true"))
+                    {
+                        if (platform.equalsIgnoreCase("local"))
+                        {
+                            WebDriverManager.chromedriver().setup();
+                            options.addArguments("--remote-allow-origins=*");
+                            driver = new ChromeDriver(options);
+                        }
+                    }
+                    else if (platform.equalsIgnoreCase("remote"))
+                    {
                         capabilities.setBrowserName(browser);
                         capabilities.setPlatform(Platform.LINUX);  //required when containers are running on different OS
                         //driver = new RemoteWebDriver(new URL("http://localhost:4441/wd/hub"), capabilities); //standalone chrome
                         driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities); //grid chrome
 
-                    } else {
+                    }
+                    else
+                    {
                         System.out.println("Invalid platform name");
                     }
 
-                } else if (browser.equalsIgnoreCase("firefox")) {
-                    if (platform.equalsIgnoreCase("local")) {
-                        WebDriverManager.firefoxdriver().setup();
-                        driver = new FirefoxDriver();
-                    } else if (platform.equalsIgnoreCase("remote")) {
+                } else if (browser.equalsIgnoreCase("firefox"))
+                {
+                    if (enableBrowserOptions.equalsIgnoreCase("true"))
+                    {
+                        if (platform.equalsIgnoreCase("local")) {
+                            WebDriverManager.firefoxdriver().setup();
+                            driver = new FirefoxDriver();
+                        }
+                    }
+                    else if (platform.equalsIgnoreCase("remote")) {
                         capabilities.setBrowserName(browser);
                         capabilities.setPlatform(Platform.LINUX);  //required when containers are running on different OS
                         //driver = new RemoteWebDriver(new URL("http://localhost:4442/wd/hub"), capabilities); //standalone firefox
