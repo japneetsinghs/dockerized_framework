@@ -9,7 +9,6 @@
         </classes>
     </test>
 
-
     <test name="Test 2">
         <parameter name="browserName" value="chrome"/>
         <classes>
