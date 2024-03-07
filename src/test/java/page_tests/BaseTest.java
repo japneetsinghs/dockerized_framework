@@ -34,26 +34,31 @@ public class BaseTest {
     protected WebDriver driver;
     protected String browser;
 
-    private ExtentTest test;
-
-    protected static ThreadLocal <ExtentTest> testLogger = new ThreadLocal<>();
-    private final ExtentReports reports = getReportObject();
+    protected static ThreadLocal<ExtentTest> testLogger = new ThreadLocal<>();
+    private static final ExtentReports reports = getReportObject();
 
 
+//    @BeforeClass
+//    public void setupReport()
+//    {
+//        if(reports == null)
+//        {
+//            reports = getReportObject();
+//        }
+//    }
 
     @Parameters({"browserName"})
     @BeforeTest()
-    public void setup(@Optional String browserName) {
+    public void setup(@Optional String browserName)
+    {
         if (browserName != null) {
             browser = browserName;
         } else {
             browser = AppConstants.browserName;
         }
 
-        DesiredCapabilities capabilities = new DesiredCapabilities();
         ChromeOptions chromeOptions;
         FirefoxOptions firefoxOptions;
-
 
         try {
             if (browser.equalsIgnoreCase("chrome")) {
@@ -117,7 +122,7 @@ public class BaseTest {
     @BeforeMethod
     public void setupReport(ITestResult testResult)
     {
-        test = reports.createTest(testResult.getMethod().getMethodName());
+        ExtentTest test = reports.createTest(testResult.getMethod().getMethodName());
         testLogger.set(test);
         testLogger.get().log(Status.INFO, "Driver Start Time: "+LocalDateTime.now());
     }
@@ -140,13 +145,19 @@ public class BaseTest {
             testLogger.get().log(Status.INFO, "Driver End Time: "+LocalDateTime.now());
         }
 
-        reports.flush();
+        //reports.flush();
     }
 
+    @AfterClass
+    public void flushReport()
+    {
+        reports.flush();
+    }
+//
 //    @AfterSuite
 //    public void flushReport()
 //    {
-//        reports.flush();
+//        reports.close();
 //    }
 
 }
