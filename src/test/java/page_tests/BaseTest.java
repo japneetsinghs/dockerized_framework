@@ -10,12 +10,15 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.slf4j.LoggerFactory;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
@@ -36,16 +39,10 @@ public class BaseTest {
 
     protected static ThreadLocal<ExtentTest> testLogger = new ThreadLocal<>();
     private static final ExtentReports reports = getReportObject();
+    //private  static final Logger logger = LoggerFactory.getLogger(BaseTest.class);
 
+    private static final Logger logger = LogManager.getLogger(BaseTest.class);
 
-//    @BeforeClass
-//    public void setupReport()
-//    {
-//        if(reports == null)
-//        {
-//            reports = getReportObject();
-//        }
-//    }
 
     @Parameters({"browserName"})
     @BeforeTest()
@@ -66,18 +63,26 @@ public class BaseTest {
                     chromeOptions = new ChromeOptions();
                     WebDriverManager.chromedriver().setup();
                     chromeOptions.addArguments("--remote-allow-origins=*");
+                    logger.info("BrowserName: "+chromeOptions.getBrowserName()+"BrowserVersion: "+chromeOptions.getBrowserVersion());
                     driver = new ChromeDriver(chromeOptions);
+
 
                 } else if (platform.equalsIgnoreCase("remote")) {
                     chromeOptions = new ChromeOptions();
                     chromeOptions.setPlatformName("linux");
+                    logger.info("BrowserName: "+chromeOptions.getBrowserName()+"BrowserVersion: "+chromeOptions.getBrowserVersion());
                     //driver = new RemoteWebDriver(new URL("http://localhost:4441/wd/hub"), chromeOptions); //standalone chrome
                     driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), chromeOptions); //grid chrome
+
+
                 } else if (platform.equalsIgnoreCase("remote_git")) {
                     chromeOptions = BrowserOptions.getChromeOptions();
                     WebDriverManager.chromedriver().setup();
                     chromeOptions.addArguments("--remote-allow-origins=*");
+                    logger.info("BrowserName: "+chromeOptions.getBrowserName()+"BrowserVersion: "+chromeOptions.getBrowserVersion());
                     driver = new ChromeDriver(chromeOptions);
+
+
                 } else {
                     System.out.println("Invalid platform name");
                 }
@@ -88,17 +93,21 @@ public class BaseTest {
                     WebDriverManager.firefoxdriver().setup();
                     firefoxOptions.addArguments("--remote-allow-origins");
                     driver = new FirefoxDriver(firefoxOptions);
+                    logger.info("BrowserName: "+firefoxOptions.getBrowserName()+"BrowserVersion: "+firefoxOptions.getBrowserVersion());
+
 
                 } else if (platform.equalsIgnoreCase("remote")) {
                     firefoxOptions = new FirefoxOptions();
                     firefoxOptions.setPlatformName("linux");
                     //driver = new RemoteWebDriver(new URL("http://localhost:4442/wd/hub"), firefoxOptions); //standalone firefox
                     driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), firefoxOptions); //grid firefox
+                    logger.info("BrowserName: "+firefoxOptions.getBrowserName()+"BrowserVersion: "+firefoxOptions.getBrowserVersion());
 
                 } else if (platform.equalsIgnoreCase("remote_git")) {
                     firefoxOptions = BrowserOptions.getFirefoxOptions();
                     WebDriverManager.firefoxdriver().setup();
                     driver = new FirefoxDriver(firefoxOptions);
+                    logger.info("BrowserName: "+firefoxOptions.getBrowserName()+"BrowserVersion: "+firefoxOptions.getBrowserVersion());
 
                 } else {
                     System.out.println("Invalid platform name");
@@ -106,6 +115,7 @@ public class BaseTest {
 
             } else {
                 System.out.println("Invalid browser name provided");
+                logger.info("Invalid browser name provided");
             }
 
         } catch (MalformedURLException e) {
@@ -145,7 +155,7 @@ public class BaseTest {
             testLogger.get().log(Status.INFO, "Driver End Time: "+LocalDateTime.now());
         }
 
-        //reports.flush();
+
     }
 
     @AfterClass
@@ -153,12 +163,6 @@ public class BaseTest {
     {
         reports.flush();
     }
-//
-//    @AfterSuite
-//    public void flushReport()
-//    {
-//        reports.close();
-//    }
 
 }
 

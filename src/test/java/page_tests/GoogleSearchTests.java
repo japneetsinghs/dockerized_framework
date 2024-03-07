@@ -1,13 +1,18 @@
 package page_tests;
 
+import org.apache.logging.log4j.LogManager;
 import org.testng.annotations.*;
 import pages.GoogleSearchPage;
+
+
+import org.apache.logging.log4j.Logger;
 
 public class GoogleSearchTests extends BaseTest
 {
    // WebDriver driver;
     GoogleSearchPage googleSearchPage;
-
+    //private  final Logger logger = LogManager.getLogManager(GoogleSearchTests.class);
+    Logger logger = LogManager.getLogger(GoogleSearchTests.class);
 
 //    @Parameters({"browserName"})
 //    @BeforeTest
@@ -32,12 +37,15 @@ public class GoogleSearchTests extends BaseTest
 //    }
 
     @Test()
-    public void testGoogleSearch() throws InterruptedException {
+    public void testGoogleSearch() throws InterruptedException
+    {
         googleSearchPage = new GoogleSearchPage(driver);
         //basic search operation test
         googleSearchPage.sendTextInSearch("Selenium latest release");
+        logger.info("Text send: Selenium latest release");
         Thread.sleep(2000);
         googleSearchPage.setGoogle_search_btn();
+        logger.info("button clicked!!!!");
         Thread.sleep(2000);
     }
 

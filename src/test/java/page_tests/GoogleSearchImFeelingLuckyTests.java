@@ -1,13 +1,17 @@
 package page_tests;
 
-import org.openqa.selenium.WebDriver;
+
 import org.testng.annotations.*;
 import pages.GoogleSearchImFeelingLucky;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class GoogleSearchImFeelingLuckyTests extends BaseTest
 {
    //WebDriver driver;
     GoogleSearchImFeelingLucky googleSearchImFeelingLucky;
+
+    Logger logger = LogManager.getLogger(GoogleSearchImFeelingLuckyTests.class);
 
 
 //    @Parameters({"browserName"})
@@ -30,8 +34,10 @@ public class GoogleSearchImFeelingLuckyTests extends BaseTest
     @Test()
     public void click2ndLink() throws InterruptedException {
         googleSearchImFeelingLucky = new GoogleSearchImFeelingLucky(driver);
+        logger.info("new driver launched");
         googleSearchImFeelingLucky.clickImFeelingLuckyBtn();
         Thread.sleep(5000);
+        logger.info("Test completed and you can review status in Test Report generated!!!");
     }
 
 
