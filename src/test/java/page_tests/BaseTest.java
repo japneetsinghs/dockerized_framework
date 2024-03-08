@@ -71,12 +71,14 @@ public class BaseTest {
                 } else if (platform.equalsIgnoreCase("remote")) {
                     chromeOptions = new ChromeOptions();
                     chromeOptions.setPlatformName("linux");
-                    chromeOptions.addArguments("--headless");
+                   // chromeOptions.addArguments("--headless");
                     chromeOptions.setPageLoadStrategy(PageLoadStrategy.EAGER);
                     logger.info("BrowserName: "+chromeOptions.getBrowserName()+"BrowserVersion: "+chromeOptions.getBrowserVersion());
-                    //driver = new RemoteWebDriver(new URL("http://localhost:4441/wd/hub"), chromeOptions); //standalone chrome
-                   driver = new RemoteWebDriver(new URL("http://192.168.29.170:4444/wd/hub"), chromeOptions); //grid chrome
-                    //driver = new RemoteWebDriver(new URL("http://docker-chrome-1:5555/wd/hub"), chromeOptions); //grid chrome
+                    //standalone chrome & mention your system IP address instead of localhost
+                    //driver = new RemoteWebDriver(new URL("http://localhost:4441/wd/hub"), chromeOptions);
+
+                    // grid chrome & mention your system IP address instead of localhost
+                   driver = new RemoteWebDriver(new URL("http://192.168.29.170:4444/wd/hub"), chromeOptions);
 
 
                 } else if (platform.equalsIgnoreCase("remote_git")) {
@@ -103,10 +105,13 @@ public class BaseTest {
                 } else if (platform.equalsIgnoreCase("remote")) {
                     firefoxOptions = new FirefoxOptions();
                     firefoxOptions.setPlatformName("linux");
-                    firefoxOptions.addArguments("--headless");
-                    //driver = new RemoteWebDriver(new URL("http://localhost:4442/wd/hub"), firefoxOptions); //standalone firefox
-                    driver = new RemoteWebDriver(new URL("http://192.168.29.170:4444/wd/hub"), firefoxOptions); //grid firefox
-                    //driver = new RemoteWebDriver(new URL("http://docker-firefox-1:5555/wd/hub"), firefoxOptions); //grid firefox
+                    //firefoxOptions.addArguments("--headless");
+                    // standalone firefox & mention your system IP address instead of localhost
+                    //driver = new RemoteWebDriver(new URL("http://localhost:4442/wd/hub"), firefoxOptions);
+
+                    // grid firefox & mention your system IP address instead of localhost
+                    driver = new RemoteWebDriver(new URL("http://192.168.29.170:4444/wd/hub"), firefoxOptions);
+
                     logger.info("BrowserName: "+firefoxOptions.getBrowserName()+"BrowserVersion: "+firefoxOptions.getBrowserVersion());
 
                 } else if (platform.equalsIgnoreCase("remote_git")) {
