@@ -71,14 +71,7 @@ public class BaseTest {
                 } else if (platform.equalsIgnoreCase("remote")) {
                     chromeOptions = new ChromeOptions();
                     chromeOptions.setPlatformName("linux");
-                    chromeOptions.addArguments("--safebrowsing-disable-auto-update ");
-                    chromeOptions.addArguments("--disable-background-networking");
-                    chromeOptions.addArguments("--no-proxy-server");
-                    chromeOptions.addArguments("--no-sandbox");
-                    chromeOptions.addArguments("--disable-extensions");
-                    chromeOptions.addArguments("--dns-prefetch-disable");
-                    chromeOptions.addArguments("--disable-gpu");
-                    chromeOptions.addArguments("--force-device-scale-factor=1");
+                    chromeOptions.addArguments("--headless");
                     chromeOptions.setPageLoadStrategy(PageLoadStrategy.EAGER);
                     logger.info("BrowserName: "+chromeOptions.getBrowserName()+"BrowserVersion: "+chromeOptions.getBrowserVersion());
                     //driver = new RemoteWebDriver(new URL("http://localhost:4441/wd/hub"), chromeOptions); //standalone chrome
@@ -110,6 +103,7 @@ public class BaseTest {
                 } else if (platform.equalsIgnoreCase("remote")) {
                     firefoxOptions = new FirefoxOptions();
                     firefoxOptions.setPlatformName("linux");
+                    firefoxOptions.setPlatformName("--headless");
                     //driver = new RemoteWebDriver(new URL("http://localhost:4442/wd/hub"), firefoxOptions); //standalone firefox
                     driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), firefoxOptions); //grid firefox
                     //driver = new RemoteWebDriver(new URL("http://docker-firefox-1:5555/wd/hub"), firefoxOptions); //grid firefox
