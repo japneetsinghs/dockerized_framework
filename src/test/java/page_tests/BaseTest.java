@@ -91,7 +91,7 @@ public class BaseTest {
                 if (platform.equalsIgnoreCase("local")) {
                     firefoxOptions = new FirefoxOptions();
                     WebDriverManager.firefoxdriver().setup();
-                    firefoxOptions.addArguments("--remote-allow-origins");
+                    //firefoxOptions.addArguments("--remote-allow-origins");
                     driver = new FirefoxDriver(firefoxOptions);
                     logger.info("BrowserName: "+firefoxOptions.getBrowserName()+"BrowserVersion: "+firefoxOptions.getBrowserVersion());
 

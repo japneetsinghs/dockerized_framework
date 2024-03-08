@@ -8,8 +8,8 @@ public class GoogleSearchImFeelingLucky extends WebElementsInteraction
 {
 
     private final By iMFeelingLuckyBtn = By.name("btnI");
-    private final By google_search_textBox = By.name("w");
-    //private final By google_search_textBox = By.name("q");
+    //private final By google_search_textBox = By.name("w");
+    private final By google_search_textBox = By.name("q");
 
     public GoogleSearchImFeelingLucky(WebDriver driver) {
         super(driver);
