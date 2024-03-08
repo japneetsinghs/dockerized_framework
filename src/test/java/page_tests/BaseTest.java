@@ -12,6 +12,7 @@ import com.aventstack.extentreports.markuputils.MarkupHelper;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -70,6 +71,15 @@ public class BaseTest {
                 } else if (platform.equalsIgnoreCase("remote")) {
                     chromeOptions = new ChromeOptions();
                     chromeOptions.setPlatformName("linux");
+                    chromeOptions.addArguments("--safebrowsing-disable-auto-update ");
+                    chromeOptions.addArguments("--disable-background-networking");
+                    chromeOptions.addArguments("--no-proxy-server");
+                    chromeOptions.addArguments("--no-sandbox");
+                    chromeOptions.addArguments("--disable-extensions");
+                    chromeOptions.addArguments("--dns-prefetch-disable");
+                    chromeOptions.addArguments("--disable-gpu");
+                    chromeOptions.addArguments("--force-device-scale-factor=1");
+                    chromeOptions.setPageLoadStrategy(PageLoadStrategy.EAGER);
                     logger.info("BrowserName: "+chromeOptions.getBrowserName()+"BrowserVersion: "+chromeOptions.getBrowserVersion());
                     //driver = new RemoteWebDriver(new URL("http://localhost:4441/wd/hub"), chromeOptions); //standalone chrome
                    // driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), chromeOptions); //grid chrome
