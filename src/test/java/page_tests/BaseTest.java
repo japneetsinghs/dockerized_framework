@@ -103,7 +103,7 @@ public class BaseTest {
                 } else if (platform.equalsIgnoreCase("remote")) {
                     firefoxOptions = new FirefoxOptions();
                     firefoxOptions.setPlatformName("linux");
-                    firefoxOptions.setPlatformName("--headless");
+                    firefoxOptions.addArguments("--headless");
                     //driver = new RemoteWebDriver(new URL("http://localhost:4442/wd/hub"), firefoxOptions); //standalone firefox
                     driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), firefoxOptions); //grid firefox
                     //driver = new RemoteWebDriver(new URL("http://docker-firefox-1:5555/wd/hub"), firefoxOptions); //grid firefox
