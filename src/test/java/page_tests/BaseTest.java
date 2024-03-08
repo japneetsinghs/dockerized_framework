@@ -72,7 +72,8 @@ public class BaseTest {
                     chromeOptions.setPlatformName("linux");
                     logger.info("BrowserName: "+chromeOptions.getBrowserName()+"BrowserVersion: "+chromeOptions.getBrowserVersion());
                     //driver = new RemoteWebDriver(new URL("http://localhost:4441/wd/hub"), chromeOptions); //standalone chrome
-                    driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), chromeOptions); //grid chrome
+                   // driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), chromeOptions); //grid chrome
+                    driver = new RemoteWebDriver(new URL("http://172.20.0.4:5555/wd/hub"), chromeOptions); //grid chrome
 
 
                 } else if (platform.equalsIgnoreCase("remote_git")) {
@@ -100,7 +101,8 @@ public class BaseTest {
                     firefoxOptions = new FirefoxOptions();
                     firefoxOptions.setPlatformName("linux");
                     //driver = new RemoteWebDriver(new URL("http://localhost:4442/wd/hub"), firefoxOptions); //standalone firefox
-                    driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), firefoxOptions); //grid firefox
+                   // driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), firefoxOptions); //grid firefox
+                    driver = new RemoteWebDriver(new URL("http://172.20.0.3:5555/wd/hub"), firefoxOptions); //grid firefox
                     logger.info("BrowserName: "+firefoxOptions.getBrowserName()+"BrowserVersion: "+firefoxOptions.getBrowserVersion());
 
                 } else if (platform.equalsIgnoreCase("remote_git")) {
